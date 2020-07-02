@@ -1,14 +1,13 @@
 import {createReducer} from '@reduxjs/toolkit'
-import {FETCHLINKS} from "../actions/fetchlinks";
-import do_fetch from "../actions/fetchlinks";
+import {REQUESTLINKS, RECEIVELINKS} from "../actions/fetchlinks";
 
 let counter = 0;
 export default createReducer({}, {
-  [FETCHLINKS]:  (state, action) =>  {
-    counter += 1;
-    do_fetch(state, action)
+  [REQUESTLINKS]:  (state, action) =>  {
+    Object.assign(state, {fetching: true});
   },
-  ADDLINKS: (state, action) => {
-    Object.assign(state['links'], {[counter]: [action.payload] });
+  [RECEIVELINKS]: (state, action) => {
+    Object.assign(state, {fetching: false});
+    Object.assign(state['links'], {[counter]: [action.links] });
   }
 });

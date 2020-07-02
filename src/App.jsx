@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import {FETCHLINKS} from "./redux/actions/fetchlinks";
-import {createAction} from "@reduxjs/toolkit";
+import fetchLinks from "./redux/actions/fetchlinks";
 import MyToolbar from "./components/my-toolbar";
 
 
@@ -15,7 +14,7 @@ class App extends Component {
 
   onclick = (event) => {
     console.log("Clicked");
-    this.props.getlinks();
+    this.props.fetchlinks();
   }
 
   render() {
@@ -31,11 +30,8 @@ class App extends Component {
 }
 
 const dispatch_to_props = (dispatch, ownprops) => {
-
   return {
-    getlinks: () => {
-      dispatch(createAction(FETCHLINKS)(dispatch));
-    }
+    fetchlinks: () => dispatch(fetchLinks())
   }
 }
 
