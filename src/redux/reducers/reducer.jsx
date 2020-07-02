@@ -1,5 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit'
 import {REQUESTLINKS, RECEIVELINKS} from "../actions/fetchlinks";
+import {CHANGE_TAB} from "../actions/managetabs";
 
 let counter = 0;
 export default createReducer({}, {
@@ -9,5 +10,9 @@ export default createReducer({}, {
   [RECEIVELINKS]: (state, action) => {
     Object.assign(state, {fetching: false});
     Object.assign(state['links'], {[counter]: [action.links] });
+  },
+  [CHANGE_TAB]: (state, action) => {
+    state['activeIndex'] = action.payload;
   }
+
 });
