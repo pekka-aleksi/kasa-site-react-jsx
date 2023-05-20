@@ -1,37 +1,33 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
-import {connect} from 'react-redux';
-import fetchLinks from "./redux/actions/fetchlinks";
 import MyTabView from "./components/my-tabview";
+import { useLinks, REQUESTLINKS, RECEIVELINKS } from './linksContext';
 
+const App = () => {
+  const { state, dispatch } = useLinks();
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  onclick = (event) => {
+  const onClick = async (event) => {
     console.log("Clicked");
-    this.props.fetchlinks();
+
+    // Dispatch an action to start the request
+    dispatch({ type: REQUESTLINKS });
+
+    // Fetch links
+    const response = await fetch(`${process.env.REACT_APP_API_URL}links`);
+    const json = await response.json();
+
+    // Dispatch an action to save the links
+    dispatch({ type: RECEIVELINKS, links: json });
   }
 
-  render() {
-    return (
-      <div>
-        <MyTabView></MyTabView>
-        <button className={'spacy'} onClick={(event) => this.onclick(event)}>Fetch links</button>
-        <pre>{JSON.stringify(process.env, null, 2)}</pre>
-        <pre>{JSON.stringify(this.props, null, 2)}</pre>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <MyTabView></MyTabView>
+      <button className={'spacy'} onClick={onClick}>Fetch links</button>
+      <pre>{JSON.stringify(process.env, null, 2)}</pre>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+    </div>
+  );
 }
 
-const dispatch_to_props = (dispatch, ownprops) => {
-  return {
-    fetchlinks: () => dispatch(fetchLinks())
-  }
-}
-
-
-export default connect(incoming => incoming, dispatch_to_props)(App);
+export default App;

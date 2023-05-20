@@ -24,8 +24,3 @@ function fetchLinks () {
       .then(json => dispatch(receiveLinks(json)));
   }
 }
-
-export default fetchLinks;
-
-
-export {requestLinks, receiveLinks} ;
