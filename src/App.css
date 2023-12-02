@@ -18,20 +18,32 @@
   align-items: center;
 }
 
-.spacy {
-  margin: 10px;
-  padding: 15px;
+.tall {
+  height: 70vh;
 }
+
+.wide {
+  width: 85vw;
+}
+
+
 .bordered {
   border-collapse: collapse;
-  border: 1px solid lightblue;
-  border-radius: 0%;
-  margin: 1px;
+  border: 1px solid black;
+  border-radius: 0;
+  margin: 1%;
 }
 .extra-bordered {
   border-collapse: collapse;
   border: 10px solid lightgreen;
   border-radius: 1%;
-  margin: 30px;
-  padding: 40px;
+  margin: 3%;
+  padding: 4%;
+}
+
+pre {
+  display: block;
+  unicode-bidi: embed;
+  font-family: monospace;
+  white-space: pre-wrap;
 }

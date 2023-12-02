@@ -9,6 +9,8 @@ import { useTab, CHANGE_TAB } from '../tabsContext';
 
 
 
+
+
 const MyTabView = ({ activeIndex: activeIndexProp, change_tab }) => {
   const [activeIndex, setActiveIndex] = useState(activeIndexProp || 0);
 
@@ -32,11 +34,23 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab }) => {
 
   switch (activeIndex) {
     case 0:
-      content = "a"; break;
+      content = <div className={"bordered tall"}>
+        Hello Friend
+      </div>;
+
+      break;
+
     case 1:
-      content = "b"; break;
+      content = <div className={"bordered tall"}>
+          Links
+      </div>
+      break;
     case 2:
-      content = "c"; break;
+      content = <div className={"bordered tall"}>
+        Who am I?
+      </div>;
+
+      break;
     default:
       content = "Something went wrong!";
   }

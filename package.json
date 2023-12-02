@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "build-deploy": "react-scripts --openssl-legacy-provider build && cp -a build /var/www/pealkasa && chown -R www-data:www-data /var/www/pealkasa",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
