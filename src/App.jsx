@@ -6,7 +6,7 @@ import { useLinks, REQUESTLINKS, RECEIVELINKS } from './linksContext';
 const App = () => {
   const { state, dispatch } = useLinks();
 
-  const onClick = async (event) => {
+  const getLinks = async (event) => {
 
     // Dispatch an action to start the request
     dispatch({ type: REQUESTLINKS });
@@ -21,15 +21,7 @@ const App = () => {
 
   return (
     <div>
-      <MyTabView></MyTabView>
-
-      <div className={"bordered wide"}>
-        <button className={'spacy'} onClick={onClick}>Fetch links</button>
-        <pre>{JSON.stringify(process.env, null, 2)}</pre>
-        <pre>{JSON.stringify(process.env.REACT_APP_API_URL)}</pre>
-        <pre>{JSON.stringify(state, null, 2)}</pre>
-      </div>
-
+      <MyTabView linkState={state}></MyTabView>
     </div>
   );
 }

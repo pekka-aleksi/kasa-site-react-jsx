@@ -8,10 +8,7 @@ import PropTypes from 'prop-types';
 import { useTab, CHANGE_TAB } from '../tabsContext';
 
 
-
-
-
-const MyTabView = ({ activeIndex: activeIndexProp, change_tab }) => {
+const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
   const [activeIndex, setActiveIndex] = useState(activeIndexProp || 0);
 
 
@@ -19,7 +16,7 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab }) => {
 
 
 
-  const onClick = (param) => {
+  const changeTab = (param) => {
     dispatch({ type: CHANGE_TAB, payload: param });
 
     console.log(`received ${param}`);
@@ -54,12 +51,14 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab }) => {
     default:
       content = "Something went wrong!";
   }
-
   return (
     <div className={'extra-bordered wide'}>
-      <pre>this.state: {JSON.stringify({ activeIndex }, null, 2)}</pre>
-
-      <TabView activeIndex={activeIndex} onTabChange={(e) => onClick(e.index)}>
+      <div className={"bordered wide"}>
+        <pre>{JSON.stringify(process.env, null, 2)}</pre>
+        <pre>{JSON.stringify(process.env.REACT_APP_API_URL)}</pre>
+        <pre>{JSON.stringify(linkState.links, null, 2)}</pre>
+      </div>
+      <TabView activeIndex={activeIndex} onTabChange={(e) => changeTab(e.index)}>
         <TabPanel header={`Header ${activeIndex}`}>
           {content}
         </TabPanel>
