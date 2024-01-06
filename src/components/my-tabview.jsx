@@ -31,7 +31,7 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
 
   switch (activeIndex) {
     case 0:
-      content = <div className={"bordered tall"}>
+      content = <div className={"bordered tall cover"}>
         Hello Friend
       </div>;
 
@@ -52,8 +52,8 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
       content = "Something went wrong!";
   }
   return (
-    <div className={'extra-bordered wide'}>
-      <div className={"bordered wide"}>
+    <div className={'extra-bordered wide cover-outer'}>
+      <div className={"bordered wide cover"}>
         <pre>{JSON.stringify(process.env, null, 2)}</pre>
         <pre>{JSON.stringify(process.env.REACT_APP_API_URL)}</pre>
         <pre>{JSON.stringify(linkState.links, null, 2)}</pre>

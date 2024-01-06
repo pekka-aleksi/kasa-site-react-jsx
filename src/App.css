@@ -1,3 +1,8 @@
+html {
+  background: url("/Math_equations_1366x768.jpg") no-repeat center fixed;
+  background-size: cover;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,17 +16,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
-
-.App {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(14px);
-  color: white;
-}
-
 
 .toolbar {
   display: flex;
@@ -53,6 +47,18 @@ code {
   margin: 3%;
   padding: 4%;
 }
+
+.cover {
+  background-color: lightsteelblue;
+  opacity: 0.8;
+  font-size: x-large;
+}
+
+.cover-outer {
+  background-color: wheat;
+  opacity: 0.8;
+}
+
 
 pre {
   display: block;

@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts --openssl-legacy-provider build",
-    "build-deploy": "react-scripts --openssl-legacy-provider build && cp -a build /var/www/pealkasa && chown -R www-data:www-data /var/www/pealkasa",
+    "build-deploy": "react-scripts --openssl-legacy-provider build && cp -a build /var/www/htdocs/kasa.site && chown -R www-data:www-data /var/www/htdocs/kasa.site",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
