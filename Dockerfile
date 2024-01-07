@@ -8,6 +8,7 @@ COPY package-lock.json package-lock.json
 COPY public public/
 COPY src src/
 COPY .nginx .nginx/
+COPY .env .env
 
 RUN npm install
 RUN npm run build
