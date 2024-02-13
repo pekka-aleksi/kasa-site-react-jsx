@@ -1,5 +1,10 @@
 import React from 'react';
-import './App.css';
+import './site.css';
+
+import 'primereact/resources/primereact.css';
+import 'primeflex/primeflex.css';
+import 'primereact/resources/themes/nova-light/theme.css';
+
 import MyTabView from "./components/my-tabview";
 import { useLinks, REQUESTLINKS, RECEIVELINKS } from './linksContext';
 
@@ -20,9 +25,11 @@ const App = () => {
   }
 
   return (
-    <div>
+    <header>
+      <figure className={"programmer_logo"}></figure>
       <MyTabView linkState={state}></MyTabView>
-    </div>
+    </header>
+
   );
 }
 

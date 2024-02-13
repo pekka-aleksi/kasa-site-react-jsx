@@ -1,0 +1,64 @@
+html {
+    padding: 0.4%;
+    margin: 0.4%;
+    border: black 1px solid;
+}
+
+
+.programmer_logo {
+    background-image: url('/programmer_logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    height: 10vh;
+    border: black 10px solid;
+}
+
+.python_kitty {
+    background-image: url('/python_kitty.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    height: 50vh;
+
+    border: black 10px solid;
+}
+
+p {
+    font-size: 1.5em;
+    font-family: 'Courier New', monospace;
+    text-align: justify;
+
+}
+
+main {
+    background: lightyellow;
+    border-radius: 1%;
+    border: black 10px solid;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+aside {
+    background: lightblue;
+    border-radius: 1%;
+}
+
+header {
+    background: lightpink;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: column;
+    border: aqua 10px solid;
+}
+
+h1 {
+    border: black 10px solid;
+    display: flex;
+    justify-content: center;
+}
+
+
+
