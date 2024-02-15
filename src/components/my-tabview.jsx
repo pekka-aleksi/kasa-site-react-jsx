@@ -9,14 +9,14 @@ import { useTab, CHANGE_TAB } from '../tabsContext';
 //Use in a component
 
 const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
-  const [activeIndex, setActiveIndex] = useState(activeIndexProp || 2);
+  const [activeIndex, setActiveIndex] = useState(activeIndexProp || 1);
 
 
-  const { state, dispatch } = useTab();
+  const {state, dispatch} = useTab();
 
 
   const changeTab = (param) => {
-    dispatch({ type: CHANGE_TAB, payload: param });
+    dispatch({type: CHANGE_TAB, payload: param});
 
     console.log(`received ${param}`);
     setActiveIndex(param);
@@ -40,17 +40,34 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
       break;
 
     case 1:
-      content = <section className={"bordered tall cover"}>
+
+      const linklist = Object.values(linkState["links"]).map((link, index) => {
+        return <section>
+
+          DATE {link["date"]} - {link["link"]}
+          <br></br>
+          <a key={index} href={link["link"]}>DESC: {link["description"]}</a>
+          <br></br>
+        </section>
+      });
+
+      content = <section>
         <header><h1>Sharing is Caring</h1></header>
+
+        <p>Here are some links to the web that I find interesting.</p>
+        {linklist}
       </section>
       break;
+
     case 2:
       content = <section>
         <header><h1>Who am I</h1></header>
 
         <p>My name is Pekka Aleksi Kasa. I'm a native Finn who was born in Jyväskylä.</p>
-        <p>I'm fairly analytical. My hobbies include playing Magic: the Gathering and programming. I like challenging myself to learn new things.</p>
-        <p>I like to express myself through the things I see. The links on this website try to show the things I find.</p>
+        <p>I'm fairly analytical. My hobbies include playing Magic: the Gathering and programming. I like challenging
+          myself to learn new things.</p>
+        <p>I like to express myself through the things I see. The links on this website try to show the things I
+          find.</p>
         <figure className={"python_kitty"}></figure>
       </section>;
 
@@ -58,11 +75,17 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
     default:
       content = "Something went wrong!";
   }
+
+  /*<aside className={"bordered wide cover"}>
+    <pre>{JSON.stringify(process.env, null, 2)}</pre>
+    <pre>{JSON.stringify(process.env.REACT_APP_API_URL)}</pre>
+    <pre>{JSON.stringify(linkState.links, null, 2)}</pre>
+  </aside>*/
+
   return (
-    <nav className={'extra-bordered wide cover-outer'}>
+    <nav>
 
       <TabView
-
         activeIndex={activeIndex}
         onTabChange={(e) => changeTab(e.index)}>
 
@@ -76,12 +99,6 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
           <main>{content}</main>
         </TabPanel>
       </TabView>
-
-      <aside className={"bordered wide cover"}>
-        <pre>{JSON.stringify(process.env, null, 2)}</pre>
-        <pre>{JSON.stringify(process.env.REACT_APP_API_URL)}</pre>
-        <pre>{JSON.stringify(linkState.links, null, 2)}</pre>
-      </aside>
     </nav>
   );
 }
