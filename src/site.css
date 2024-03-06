@@ -1,63 +1,166 @@
 html {
-    padding: 0.4%;
-    margin: 0.4%;
-    border: black 1px solid;
+    font-family: Verdana, sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html, main, header, section, section > header, footer, h1, nav {
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
+
+}
+
+.navdiv {
+    border-bottom: 1px solid black;
+}
+
+.linkdiv {
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.5em;
+    background: whitesmoke;
+}
+
+.linkheader {
+    margin-left: 1%;
+    margin-right: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linkdiv, .floatdiv, header, footer {
+    border: 1px solid black;
+}
+
+main, aside, header, section, section > header, footer, nav  {
+    border-radius: 0.7em;
+}
+
+footer, header {
+    background: lightseagreen;
+}
+
+footer, header {
+    padding: 1%;
+    margin: 1%;
+    border-radius: 0.35em;
+}
+
+.p-tabmenu-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
 }
 
 
-.programmer_logo {
-    background-image: url('/programmer_logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    height: 25vh;
-    border: black 10px solid;
+.navdiv, .floatdiv {
+    background-color: lightgreen;
 }
 
-.python_kitty {
-    background-image: url('/python_kitty.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+.floatdiv {
+    padding: 2%;
+    margin: 1%;
+    border-radius: 0.5em;
+}
 
-    height: 50vh;
+.navdiv {
+    position: sticky;
+    top: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
-    border: black 10px solid;
+nav {
+
+    top: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    gap: 10%;
 }
 
 main {
-    background: lightyellow;
-    border-radius: 0.7em;
-    border: black 10px solid;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding: 0;
 }
 
 aside {
     background: lightblue;
-    border-radius: 0.7em;
 }
+
+section {
+    background: lightgreen;
+    padding: 2%;
+    margin: 0;
+}
+
+section > header {
+    background: lightcoral;
+    padding: 0;
+}
+
+
 
 header {
-    background: lightseagreen;
-    border-radius: 0.7em;
     display: flex;
     flex-direction: column;
-    border: aqua 10px solid;
 }
 
-h1 {
-    border: black 10px solid;
+footer {
     display: flex;
     justify-content: center;
+    font-weight: bolder;
+}
+
+
+
+
+h1 {
     font-size: xxx-large;
+    text-align: center;
 }
 
 
 p {
     font-size: large;
     text-align: justify;
-
 }
 
+
+.python_kitty, .programmer_logo {
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
+
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.programmer_logo {
+    background-image: url('./img/programmer_logo.png');
+    height: 25vh;
+}
+
+.python_kitty {
+    background-image: url('./img/python_kitty_256.png');
+    width: 100%;
+    flex-direction: column;
+    flex-basis: 1000px;
+    min-height: 200px;
+}
