@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { useTab, CHANGE_TAB } from '../tabsContext';
+import {useTab, CHANGE_TAB} from '../tabsContext';
 import {TabMenu} from "primereact/tabmenu";
 
 import 'primeicons/primeicons.css';
@@ -13,8 +13,8 @@ const POSTS_INDEX = 3;
 
 //Use in a component
 
-const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
-  const [activeIndex, setActiveIndex] = useState(activeIndexProp || 1);
+const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
+  const [activeIndex, setActiveIndex] = useState(activeIndexProp || LINK_PAGE_INDEX);
 
 
   const {state, dispatch} = useTab();
@@ -49,8 +49,12 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
 
       const linklist = Object.values(linkState["links"]).map((link, index) => {
         return <div className={"linkdiv"}>
-          <div className={"linkheader"}><h2><a key={index} href={link.link}>{link["link"]}</a></h2> (added {new Date(link.date).toLocaleDateString()})</div>
-          {link["description"]}
+
+          <div className={"linkheader"}>
+            <h2><a key={index} href={link.link}>{link["link"]}</a></h2> (added {new Date(link.date).toLocaleDateString()})
+            <p className={"linktext"}>{link["description"]}</p>
+          </div>
+
         </div>
       });
 
@@ -58,7 +62,7 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
         <header><h1>Sharing is Caring</h1></header>
 
         <p>Here are some links to the web that I find interesting.</p>
-        <section>{linklist}</section>
+        <section className={"linksection"}>{linklist}</section>
       </section>
       break;
     case POSTS_INDEX:
@@ -75,9 +79,12 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
 
         <p>My name is Pekka Aleksi Kasa. I'm a native Finn who was born in Jyväskylä.</p>
 
-        <p>What I'm doing right now is studying programming and (mostly) mathematics. I'm working on my bachelor's degree (mathematics) during 2024.</p>
-        <p>The end goal for this is hopefully to be working with really cool problems - while getting compensated for the time lost.</p>
-        <p>I like to express myself through the things I find worth sharing. The links on this website try to show those things.</p>
+        <p>What I'm doing right now is studying programming and (mostly) mathematics. I'm working on my bachelor's
+          degree (mathematics) during 2024.</p>
+        <p>The end goal for this is hopefully to be working with really cool problems - while getting compensated for
+          the time lost.</p>
+        <p>I like to express myself through the things I find worth sharing. The links on this website try to show those
+          things.</p>
 
         <figure className={"python_kitty"}></figure>
       </section>;
@@ -97,15 +104,15 @@ const MyTabView = ({ activeIndex: activeIndexProp, change_tab, linkState}) => {
   return (
 
     <div className={"floatdiv"}>
-    <div className={"navdiv"}>
+      <div className={"navdiv"}>
 
-    <nav>
-      <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
-      </TabMenu>
-    </nav>
-    </div>
+        <nav>
+          <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
+          </TabMenu>
+        </nav>
+      </div>
 
-        <main>{content}</main>
+      <main>{content}</main>
 
     </div>
   );
