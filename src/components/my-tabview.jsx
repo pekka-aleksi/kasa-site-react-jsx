@@ -14,7 +14,7 @@ const POSTS_INDEX = 3;
 //Use in a component
 
 const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
-  const [activeIndex, setActiveIndex] = useState(activeIndexProp || LINK_PAGE_INDEX);
+  const [activeIndex, setActiveIndex] = useState(activeIndexProp || FRONT_PAGE_INDEX);
 
 
   const {state, dispatch} = useTab();
@@ -41,6 +41,7 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
         <p>Welcome to my website.</p>
         <p>Here you can find links to the web, and a little bit about me.</p>
         <p>Feel free to look around.</p>
+
       </section>;
 
       break;
@@ -51,8 +52,10 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
         return <div className={"linkdiv"}>
 
           <div className={"linkheader"}>
-            <h2><a key={index} href={link.link}>{link["link"]}</a></h2> (added {new Date(link.date).toLocaleDateString()})
-            <p className={"linktext"}>{link["description"]}</p>
+            <h2><a key={index} href={link.href}>{link.text}</a></h2> (added {new Date(link.date).toLocaleDateString()})
+          </div>
+          <div className={"linktext"}>
+            <p>{link.description}</p>
           </div>
 
         </div>
@@ -67,7 +70,7 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
       break;
     case POSTS_INDEX:
       content = <section>
-        <header><h1>Posts</h1></header>
+        <header><h1>Today I Learned</h1></header>
 
         <p>Here are some posts that I have written.</p>
       </section>;
@@ -86,6 +89,37 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
         <p>I like to express myself through the things I find worth sharing. The links on this website try to show those
           things.</p>
 
+        <section className={"linksection"}>
+          <div className={"linkdiv"}>
+            <div className={"linkheader"}>
+
+              <h2>My GitHub Profile</h2>
+              <div className={"linktext "}>
+                <p>
+                  <span className={"pi pi-github"}></span> - Github
+                  <h2><a key="1" href="https://github.com/pekka-aleksi/">github.com/pekka-aleksi</a></h2>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className={"linkdiv"}>
+            <div className={"linkheader"}>
+
+              <h2>My LinkedIn Profile</h2>
+              <div className={"linktext "}>
+                <p>
+                  <div className={"pi pi-linkedin"}></div> - LinkedIn
+
+                  <h2><a key="2" href="https://www.linkedin.com/in/pekka-kasa-681927125/">linkedin profile</a></h2>
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+
         <figure className={"python_kitty"}></figure>
       </section>;
 
@@ -98,7 +132,7 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
     {label: 'Frontpage', icon: 'pi pi-fw pi-home', command: () => changeTab(FRONT_PAGE_INDEX)},
     {label: 'Links', icon: 'pi pi-fw pi-link', command: () => changeTab(LINK_PAGE_INDEX)},
     {label: 'About Me', icon: 'pi pi-fw pi-user', command: () => changeTab(ABOUT_ME_INDEX)},
-    {label: 'Posts', icon: 'pi pi-fw pi-pencil', command: () => changeTab(POSTS_INDEX)}
+    {label: 'TIL', icon: 'pi pi-fw pi-pencil', command: () => changeTab(POSTS_INDEX)}
   ]
 
   return (

@@ -31,12 +31,15 @@ const App = () => {
 
   return (
     <div>
-    <header>
+      <div>
+    <header className={"header_holder"}>
+      <figure className={"mathpic"}></figure>
       <figure className={"programmer_logo"}></figure>
     </header>
+      </div>
       <MyTabView linkState={state}></MyTabView>
 
-      <footer><span>© Pekka Kasa</span></footer>
+      <footer><span>© 2024 Pekka Kasa</span></footer>
     </div>
 
   );

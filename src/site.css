@@ -1,6 +1,7 @@
 html {
-    font-family: Verdana, sans-serif;
+    font-family: Georgia, serif;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -14,6 +15,38 @@ html, main, header, section, section > header, footer, h1, nav {
 
 }
 
+
+/**/
+
+html {
+    background: lightgray;
+}
+
+
+.linkdiv, header {
+    background-color: bisque;
+}
+
+
+footer  {
+    background: whitesmoke;
+}
+/*
+.linkdiv {
+    background: lightgray;
+}*/
+
+nav {
+    background: whitesmoke;
+}
+
+
+.linktext, footer {
+    background-color: blanchedalmond;
+}
+
+
+/***/
 
 .p-tabmenu {
     display: table-row;
@@ -58,31 +91,25 @@ nav {
 }
 
 .linkdiv {
-    padding: 1%;
+    padding: 2%;
     margin: 1%;
-    border-radius: 0.5em;
-    background: whitesmoke;
+
     flex-basis: 48%;
     min-width: 200px;
+
 }
 
-.linkheader {
-    margin-left: 1%;
-    margin-right: 0;
 
-    /*flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    overflow: clip;*/
-}
+
+
 
 .linktext {
-    margin: 0;
-    padding: 5% 1% 1% 1%;
+    margin: 5% 0 0 0;
+    padding: 1% 3% 1% 3%;
     font-size: large;
     font-weight: bold;
     border: solid 1px black;
+
 }
 
 
@@ -95,13 +122,11 @@ nav {
 
 }
 
-main, aside, header, section, section > header, footer, nav, .floatdiv  {
+main, aside, header, section, section > header, footer, nav, .floatdiv, .linkdiv  {
     border-radius: 0.2em;
 }
 
-footer, header {
-    background: lightseagreen;
-}
+
 
 footer, header {
     padding: 1%;
@@ -118,19 +143,20 @@ footer, header {
 
 
 .navdiv, .floatdiv {
-    background-color: lightgreen;
+    background-color: white;
 }
 
 .floatdiv {
-    padding: 2%;
-    margin: 1%;
+    padding: 1%;
+    padding-top: 0;
+    margin: 0.5%;
 }
 
 .navdiv {
     position: sticky;
     top: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 1.25%;
+    padding-top: 1.25%;
 }
 
 
@@ -144,13 +170,11 @@ aside {
 }
 
 section {
-    background: lightgreen;
     padding: 2%;
     margin: 0;
 }
 
 section > header {
-    background: lightcoral;
     padding: 0;
 }
 
@@ -173,16 +197,18 @@ footer {
 h1 {
     font-size: xxx-large;
     text-align: center;
+    padding: 1%;
 }
 
 
 p {
     font-size: large;
     text-align: justify;
+
 }
 
 
-.python_kitty, .programmer_logo {
+.python_kitty, .programmer_logo, .mathpic {
     margin-inline-end: 0;
     margin-inline-start: 0;
     margin-block-end: 0;
@@ -194,9 +220,42 @@ p {
     background-position: center;
 }
 
+.header_holder {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 25vh;
+    width: 100%;
+}
+
+.mathpic {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    background-image: url('./img/mathpic_1920x425.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+    position: relative;
+    height: 425px;
+}
+
+
 .programmer_logo {
     background-image: url('./img/programmer_logo.png');
-    height: 25vh;
+    opacity: 1.0;
+    position: absolute;
+
+    top: 12.5%;
+    left: 25%;
+
+
+    min-width: 175px;
+    min-height: 175px;
+
+    width: 50%;
+    height: 75%;
 }
 
 .python_kitty {
@@ -211,7 +270,10 @@ p {
     h1 {
         font-size: large;
     }
-    h2 {
+    .linkheader {
+        font-size: small;
+    }
+    footer {
         font-size: small;
     }
     p {
@@ -219,5 +281,12 @@ p {
     }
     .linkdiv {
         flex-basis: 98%;
+    }
+    .programmer_logo {
+        top: 12.5%;
+        left: 0;
+
+        min-width: 100%;
+        min-height: 100px;
     }
 }
