@@ -4,7 +4,8 @@ import {useTab, CHANGE_TAB} from '../tabsContext';
 import {TabMenu} from "primereact/tabmenu";
 
 import 'primeicons/primeicons.css';
-
+// TODO: add the Quill editor to the project -- this is for styling the TILs
+// https://quilljs.com/docs/installation/
 
 const FRONT_PAGE_INDEX = 0;
 const LINK_PAGE_INDEX = 1;
@@ -13,7 +14,8 @@ const POSTS_INDEX = 3;
 
 //Use in a component
 
-const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
+const MyTabView = ({activeIndex: activeIndexProp, paramstate}) => {
+
   const [activeIndex, setActiveIndex] = useState(activeIndexProp || FRONT_PAGE_INDEX);
 
 
@@ -22,14 +24,11 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
 
   const changeTab = (param) => {
     dispatch({type: CHANGE_TAB, payload: param});
-
-    console.log(`received ${param}`);
     setActiveIndex(param);
   }
 
   useEffect(() => {
-    console.log(`activeIndex changed to ${activeIndex}`);
-  }, [activeIndex]);
+  }, []);
 
   let content = "";
 
@@ -48,13 +47,13 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
 
     case LINK_PAGE_INDEX:
 
-      const linklist = Object.values(linkState["links"]).map((link, index) => {
-        return <div className={"linkdiv"}>
+      const linklist = Object.values(paramstate.links).map((link, index) => {
+        return <div key={index} className={"linkdiv"}>
 
           <div className={"linkheader"}>
             <h2><a key={index} href={link.href}>{link.text}</a></h2> (added {new Date(link.date).toLocaleDateString()})
           </div>
-          <div className={"linktext"}>
+          <div key={index} className={"linktext"}>
             <p>{link.description}</p>
           </div>
 
@@ -65,9 +64,10 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
         <header><h1>Sharing is Caring</h1></header>
 
         <p>Here are some links to the web that I find interesting.</p>
-        <section className={"linksection"}>{linklist}</section>
+        <section className={"linksection"}>{linklist.length ? linklist : "No links (This will be fixed!)"}</section>
       </section>
       break;
+
     case POSTS_INDEX:
       content = <section>
         <header><h1>Today I Learned</h1></header>
@@ -95,10 +95,10 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
 
               <h2>My GitHub Profile</h2>
               <div className={"linktext "}>
-                <p>
+
                   <span className={"pi pi-github"}></span> - Github
                   <h2><a key="1" href="https://github.com/pekka-aleksi/">github.com/pekka-aleksi</a></h2>
-                </p>
+
               </div>
             </div>
           </div>
@@ -108,11 +108,8 @@ const MyTabView = ({activeIndex: activeIndexProp, change_tab, linkState}) => {
 
               <h2>My LinkedIn Profile</h2>
               <div className={"linktext "}>
-                <p>
                   <div className={"pi pi-linkedin"}></div> - LinkedIn
-
                   <h2><a key="2" href="https://www.linkedin.com/in/pekka-kasa-681927125/">linkedin profile</a></h2>
-                </p>
               </div>
             </div>
           </div>

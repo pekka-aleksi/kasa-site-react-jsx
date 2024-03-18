@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import {LinksProvider} from './linksContext';
+import {BackendProvider} from './backendContext';
 import {TabProvider} from "./tabsContext";
 
 
@@ -10,9 +10,9 @@ ReactDOM.render(
   <React.StrictMode>
 
       <TabProvider>
-        <LinksProvider>
+        <BackendProvider>
           <App/>
-        </LinksProvider>
+        </BackendProvider>
       </TabProvider>
 
   </React.StrictMode>,
