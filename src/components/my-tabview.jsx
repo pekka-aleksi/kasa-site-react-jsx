@@ -4,6 +4,8 @@ import {useTab, CHANGE_TAB} from '../tabsContext';
 import {TabMenu} from "primereact/tabmenu";
 
 import 'primeicons/primeicons.css';
+import "quill/dist/quill.core.css";
+
 // TODO: add the Quill editor to the project -- this is for styling the TILs
 // https://quilljs.com/docs/installation/
 
@@ -64,17 +66,11 @@ const MyTabView = ({activeIndex: activeIndexProp, paramstate}) => {
         <header><h1>Sharing is Caring</h1></header>
 
         <p>Here are some links to the web that I find interesting.</p>
-        <section className={"linksection"}>{linklist.length ? linklist : "No links (This will be fixed!)"}</section>
+        <section className={"linksection"}>{linklist.length ? linklist : "No links. (This will be fixed!)"}</section>
       </section>
       break;
 
-    case POSTS_INDEX:
-      content = <section>
-        <header><h1>Today I Learned</h1></header>
 
-        <p>Here are some posts that I have written.</p>
-      </section>;
-      break;
 
     case ABOUT_ME_INDEX:
       content = <section>
@@ -121,6 +117,26 @@ const MyTabView = ({activeIndex: activeIndexProp, paramstate}) => {
       </section>;
 
       break;
+
+    case POSTS_INDEX:
+
+      const tillist = Object.values(paramstate.tils).map((til, index) => {
+        return <div key={index} className={"ql-editor"} dangerouslySetInnerHTML={{ __html: til.html }}>
+        </div>
+      });
+
+
+
+
+      content = <section>
+        <header><h1>Today I Learned</h1></header>
+
+        <p>Here are some posts that I have written.</p>
+        {tillist.length ? tillist : <div className={"ql-editor"}><div className={"ql-align-center"}>No TILS. (This will be fixed!)</div></div>}
+      </section>;
+      break;
+
+
     default:
       content = "Something went wrong!";
   }
