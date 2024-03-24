@@ -230,7 +230,7 @@ p {
     display: flex;
     flex-direction: column;
     flex-shrink: 1;
-    background-image: url('./img/mathpic_1920x425.jpg');
+    background-image: url('./img/mathpic_1920x425.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -241,7 +241,7 @@ p {
 
 
 .programmer_logo {
-    background-image: url('./img/programmer_logo.png');
+    background-image: url('./img/programmer_logo.webp');
     opacity: 1.0;
     position: absolute;
 
@@ -257,7 +257,7 @@ p {
 }
 
 .python_kitty {
-    background-image: url('./img/python_kitty_256.png');
+    background-image: url('./img/python_kitty_256.webp');
     width: 100%;
     flex-direction: column;
     flex-basis: 1000px;
